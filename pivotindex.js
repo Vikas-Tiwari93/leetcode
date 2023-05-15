@@ -9,13 +9,13 @@ function pivot(input) {
     let leftsum = 0;
     let rightsum = sum;
     for (let j = 0; j < input.length; j++) {
-      if (leftsum !== rightsum) {
+      if (leftsum !== rightsum && && j!==input.length-1) {
         leftsum = leftsum + input[j - 1] || 0;
         rightsum = rightsum - input[j];
       } else if (leftsum === rightsum) {
-        return j;
-      } else {
-        return console.log("no pivot index found");
+        return j - 1;
+      } else if(leftsum !== rightsum && j===input.length-1) {
+        return -1
       }
     }
   } else console.log("enter a valid array oinput");
