@@ -9,3 +9,53 @@
   <body></body>
 </html>
 <script src="./subsequence_string.js"></script>
+<script>
+  const a = () => {
+    return new Promise((resolve, reject) => {
+      reject("error");
+    });
+  };
+
+  const b = () => {
+    new promise((reply, reject) => {
+      reply();
+      reject();
+    });
+  };
+
+  // calling the promise.
+
+  const resolvepromise = async () => {
+    try {
+      const a = await a();
+      const b = await b(a);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  //or another calling method
+
+  const calling = async () => {
+    let a = await a().catch((err) => {
+      console.log(err);
+    });
+    if (!a) {
+      a = 20;
+    }
+    let b = await b(a).catch((err) => {
+      console.log(err);
+    });
+  };
+  calling();
+
+  //parallel running of promises multiple
+
+  Promise.all([a(), b()])
+    .then((data) => {
+      console.log(data);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+</script>
